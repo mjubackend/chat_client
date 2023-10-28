@@ -178,6 +178,10 @@ def on_cs_create_room(sock, argv):
   else:
     raise Exception(f'Invalid argv type: {type(argv)}')
 
+  if not title:
+    print('방 제목을 지정해야 됩니다.')
+    return
+
   messages = []
   if FLAGS.format == 'json':
     message = {
@@ -208,9 +212,13 @@ def on_cs_join_room(sock, argv):
   if isinstance(argv, str):
     roomId = int(argv)
   elif isinstance(argv, list):
-    roomId = int(argv[0])
+    roomId = int(argv[0]) if argv else None
   else:
     raise Exception(f'Invalid argv type: {type(argv)}')
+
+  if not roomId:
+    print('방 번호를 입력해야 됩니다.')
+    return
 
   messages = []
   if FLAGS.format == 'json':
