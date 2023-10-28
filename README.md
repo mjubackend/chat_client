@@ -33,6 +33,14 @@ $ python3 ./client.py --format=protobuf --port=9000 --verbosity=1
 교수가 개발한 데모 서버가 실습 서버의 9000 번 포트에 동작하고 있습니다.
 따라서 아래 명령어에 대한 설명은 이 서버에 접속 후 테스트 해볼 수 있습니다.
 
+데모 서버를 직접 실행해 보고 싶은 경우 다음 명령을 실행합니다.
+(해당 파일은 Linux 에서만 동작하며 Windows 나 macOS 에서는 실행이 되지 않습니다.)
+
+```
+$ python3 dist/server.py --port=내포트번호
+```
+(보다 자세한 옵션은 `--help` 인자를 주고 실행해 보면 알 수 있음)
+
 ## 사용 가능한 명령어 설명
 
 client.py 를 실행해서 서버와 접속한 경우 다음과 같은 명령어들을 쓸 수 있습니다.
@@ -125,3 +133,9 @@ $ protoc --python_out=. -I. message.proto
 ```
 
 JSON 의 경우와 마찬가지로 대응되는 `on_cs_XXX()` 함수와 `on_sc_YYY()` 함수를 참고해서 메시지를 만들면 됩니다.
+
+
+# 4. 구현 요구 조건
+
+* 앞의 client.py 명령어들이 동작하게끔 메시지 포맷 (= 프로토콜)이 호환되는 서버를 작성하시오.
+* 서버는 Python, C++, Java 어떤 것을 써도 상관 없지만, framework 은 사용할 수 없으며 직접 I/O multiplexing 과 producer-consumer 문제를 구현해야 함
