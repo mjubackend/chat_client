@@ -140,13 +140,15 @@ JSON 의 경우와 마찬가지로 대응되는 `on_cs_XXX()` 함수와 `on_sc_Y
 * 앞의 client.py 명령어들이 동작하게끔 메시지 포맷 (= 프로토콜)이 호환되는 서버를 작성하시오.
 * 서버는 Python, C++, Java 어떤 것을 써도 상관 없지만, framework 은 사용할 수 없으며 직접 I/O multiplexing 과 producer-consumer 문제를 구현해야 함
 * 서버는 worker thread 들의 개수를 수정할 수 있어야 합니다. (프로그램 실행 인자로 할 수 있다면 가장 좋겠지만, 이 부분이 익숙치 않다면 코드 상에서 대응되는 변수 값을 고치면 쓰레드 개수가 수정되게 구현해야 됩니다.)
+* 서버가 클라이언트에 메시지를 전송하고 그게 클라이언트에서 출력되는 것이 중요합니다. 샘플 서버를 흉내낸다면 이 부분을 흉내내고, 서버 자체에서 출력되는 실행 로그 메시지는 똑같을 필요가 없습니다.
 
 # 5. 평가 항목
 
+* worker thread 를 2개 이상으로 지정할 수 있도록 프로그래밍했는지 여부
 * worker thread 가 2개 이상일 때 위의 명령어들이 제대로 동작하는지 여부 (= synchronization 이 제대로 구현되었는지) 
 * 둘 이상의 채팅 방에 유저들이 나눠 들어가 있는 경우 대화방 간 간섭 없이 제대로 채팅이 되는지 여부
 * I/O multiplexing 적용 여부
-* producer-consumer 적용 여부
+* producer-consumer 적용 여부 (= queue, mutex, condition variable 사용 여부)
 
 # 6. 주의점
 
