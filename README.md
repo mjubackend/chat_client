@@ -149,6 +149,7 @@ JSON 의 경우와 마찬가지로 대응되는 `on_cs_XXX()` 함수와 `on_sc_Y
 * 둘 이상의 채팅 방에 유저들이 나눠 들어가 있는 경우 대화방 간 간섭 없이 제대로 채팅이 되는지 여부
 * I/O multiplexing 적용 여부
 * producer-consumer 적용 여부 (= queue, mutex, condition variable 사용 여부)
+* Message handler map 적용 여부
 
 # 6. 주의점
 
