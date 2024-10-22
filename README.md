@@ -16,15 +16,25 @@ client.py 는 다음 실행 인자들을 사용할 수 있습니다.
 
 ## 실행 예시
 
+### 필요 패키지 설치
+
+```
+$ python3 -m venv .venv
+$ source .venv/bin/activate
+$ python3 -m pip install -r requirements.txt
+```
+
 ### JSON 을 이용해서 메시지를 주고 받을 예정이고, 개발한 채팅 클라이언트를 실습 서버 10101 번 포트에 띄운 경우
 
 ```
+$ source .venv/bin/activate
 $ python3 ./client.py --format=json --port=10101
 ```
 
 ### Protobuf 를 이용해서 메시지를 주고 받을 예정이고, 개발한 채팅 클라이언트를 실습 서버 10101 번 포트에 띄웠는데 더 많은 로그 메시지를 보고 싶은 경우 
 
 ```
+$ source .venv/bin/activate
 $ python3 ./client.py --format=protobuf --port=10101 --verbosity=1
 ```
 
