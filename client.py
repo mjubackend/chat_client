@@ -212,7 +212,12 @@ def on_cs_join_room(sock, argv):
   if isinstance(argv, str):
     roomId = int(argv)
   elif isinstance(argv, list):
-    roomId = int(argv[0]) if argv else None
+    roomId = None
+
+    try:
+      roomId = int(argv[0]) if argv else None
+    except ValueError:
+      pass
   else:
     raise Exception(f'Invalid argv type: {type(argv)}')
 
