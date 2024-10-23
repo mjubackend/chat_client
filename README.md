@@ -31,12 +31,30 @@ $ source .venv/bin/activate
 $ python3 ./client.py --format=json --port=10101
 ```
 
-### Protobuf 를 이용해서 메시지를 주고 받을 예정이고, 개발한 채팅 클라이언트를 실습 서버 10101 번 포트에 띄웠는데 더 많은 로그 메시지를 보고 싶은 경우 
+### Protobuf 를 이용해서 메시지를 주고 받을 예정이고, 개발한 채팅 클라이언트를 실습 서버 10101 번 포트에 띄운 경우
 
+```
+$ source .venv/bin/activate
+$ python3 ./client.py --format=protobuf --port=10101
+```
+
+### 더 상세한 로그 메시지를 보고 싶은 경우
+
+클라이언트 측에서 서버와 주고 받는 메시지의 상세 정보를 보고 싶은 경우 `--verbosity` 옵션을 추가할 수 있습니다. 
+기본 값은 `0` 인데, `1` 은 좀 더 많은 로그 메시지, `2`는 아주 많은 로그 메시지를 출력합니다.
+
+예시 1
 ```
 $ source .venv/bin/activate
 $ python3 ./client.py --format=protobuf --port=10101 --verbosity=1
 ```
+
+예시 2
+```
+$ source .venv/bin/activate
+$ python3 ./client.py --format=json --port=10101 --verbosity=2
+```
+
 
 ## 데모 서버
 
@@ -125,7 +143,7 @@ client.py 를 실행해서 서버와 접속한 경우 다음과 같은 명령어
 
 # 3. 클라이언트-서버 간 메시지
 
-JSON 과 Protobuf 둘 중 하나를 선택해서 구현하면 됩니다. **(둘 다 구현 시에는 보너스 점수 있음)**
+JSON 과 Protobuf 두 경우를 모두 구현하는 것이 목적입니다.
 아래 설명에서 `CS` 가 붙는 메시지 포맷은 `클라이언트 -> 서버` 를 의미합니다. `SC` 는 `서버 -> 클라이언트` 를 의미합니다.
 
 ## JSON 을 이용하는 경우
@@ -160,6 +178,7 @@ JSON 의 경우와 마찬가지로 대응되는 `on_cs_XXX()` 함수와 `on_sc_Y
 * I/O multiplexing 적용 여부
 * producer-consumer 적용 여부 (= queue, mutex, condition variable 사용 여부)
 * Message handler map 적용 여부
+* JSON 과 Protobuf 둘 다 지원하는지 여부
 
 # 6. 주의점
 
